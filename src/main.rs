@@ -32,7 +32,7 @@ fn setup(
     commands.spawn_bundle(OrthographicCameraBundle::new_2d());
     commands.spawn_bundle(UiCameraBundle::default());
 
-    let mut window = windows.get_primary_mut().unwrap();
+    let window = windows.get_primary_mut().unwrap();
 
     window.set_position(IVec2::new(80, 50));
 
@@ -46,8 +46,10 @@ fn setup(
         material: materials.add(Color::NONE.into()),
         ..Default::default()
     })
-    // Bottom Wrapper
+    
     .with_children(|parent| {
+
+    // Bottom Wrapper
         parent
             .spawn_bundle(NodeBundle {
                 style: Style {
@@ -72,7 +74,8 @@ fn setup(
                 material: materials.add(Color::rgb(0.0, 0.0, 0.28).into()),
                 ..Default::default()
             })
-        // left side
+
+        // left side top wrapper
         .with_children(|parent| {
             parent.spawn_bundle(NodeBundle {
                 style: Style {
@@ -85,23 +88,39 @@ fn setup(
 
                 ..Default::default()
             })
-            // Text
+
+            // "2048" text block
             .with_children(|parent| {
-                parent.spawn_bundle(TextBundle {
+                parent.spawn_bundle(NodeBundle {
                     style: Style {
-                        margin: Rect::all(Val::Px(5.0)),
+                        size: Size::new(Val::Percent(70.0), Val::Percent(70.0)),
+                        display: Display::Flex,
+                        justify_content: JustifyContent::Center,
+                        align_items: AlignItems::Center,
                         ..Default::default()
                     },
-                    text: Text::with_section(
-                        "2048",
-                        TextStyle {
-                            font: asset_server.load("fonts/FiraSans-Bold.ttf"),
-                            font_size: 30.0,
-                            color: Color::BLACK,
-                        },
-                    Default::default()
-                ),
+                    material: materials.add(Color::hex("eccc5f").unwrap().into()),
                     ..Default::default()
+                })
+
+                // "2048" text
+                .with_children(|parent| {
+                    parent.spawn_bundle(TextBundle {
+                        style: Style {
+                            margin: Rect::all(Val::Px(5.0)),
+                            ..Default::default()
+                        },
+                        text: Text::with_section(
+                            "2048",
+                            TextStyle {
+                                font: asset_server.load("fonts/FiraSans-Bold.ttf"),
+                                font_size: 50.0,
+                                color: Color::WHITE,
+                            },
+                        Default::default()
+                    ),
+                        ..Default::default()
+                    });
                 });
             });
         });

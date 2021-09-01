@@ -205,6 +205,7 @@ name = "bevy-2048"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "kurbo",
 ]
 
 [[package]]
@@ -1896,6 +1897,15 @@ checksum = "b19cc4a81304db2a0ad69740e83cdc3a9364e3f9bd6d88a87288a4c2deec927b"
 dependencies = [
  "libc",
  "libloading 0.6.7",
+]
+
+[[package]]
+name = "kurbo"
+version = "0.8.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e30b1df631d23875f230ed3ddd1a88c231f269a04b2044eb6ca87e763b5f4c42"
+dependencies = [
+ "arrayvec",
 ]
 
 [[package]]
