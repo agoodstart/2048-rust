@@ -1,6 +1,7 @@
 use bevy::prelude::*;
 use bevy::render::pass::ClearColor;
 
+mod components;
 
 // struct Grid {
 //     block: Handle<ColorMaterial>,
