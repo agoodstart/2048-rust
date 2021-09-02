@@ -103,11 +103,20 @@ fn setup(
             .spawn_bundle(NodeBundle {
                 style: Style {
                     size: Size::new(Val::Percent(100.0), Val::Percent(70.0)),
+                    justify_content: JustifyContent::Center,
+                    align_items: AlignItems::Center,
                     // border: Rect::all(Val::Px(2.0)),
                     ..Default::default()
                 },
                 material: materials.add(Color::rgb(0.65, 0.65, 0.65).into()),
                 ..Default::default()
+            })
+            .with_children(|parent| {
+                parent
+                    .spawn_bundle(NodeBundle {
+
+                        ..Default::default()
+                    });
             });
             
 
@@ -186,7 +195,6 @@ fn setup(
                     align_items: AlignItems::Center,
                     ..Default::default()
                 },
-
                 ..Default::default()
             })
             .with_children(|parent| {
@@ -207,7 +215,7 @@ fn setup(
                 .with_children(|parent| {
                     parent.spawn_bundle(TextBundle {
                         text: Text::with_section(
-                            "Button",
+                            "Restart",
                             TextStyle {
                                 font: asset_server.load("fonts/FiraSans-Bold.ttf"),
                                 font_size: 40.0,
